@@ -1,0 +1,6 @@
+@MantisWebshop.Server_HostAddress = http://localhost:5128
+
+GET {{MantisWebshop.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
