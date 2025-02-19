@@ -4,6 +4,7 @@ using MantisWebshop.Server.Sql.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MantisWebshop.Server.Sql.Migrations
 {
     [DbContext(typeof(MantisWebshopDbContext))]
-    partial class MantisWebshopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250219141757_morefixes")]
+    partial class morefixes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

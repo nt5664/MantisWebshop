@@ -1,5 +1,6 @@
 ﻿using MantisWebshop.Server.Sql.Models;
 using MantisWebshop.Server.Sql.Models.DTOs;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace MantisWebshop.Server.Sql.Extensions
 {
@@ -47,15 +48,38 @@ namespace MantisWebshop.Server.Sql.Extensions
             };
         }
 
-        public static ProductSnapshot TakeSnapshot(this Product product)
+        public static ProductSnapshot TakeSnapshot(this Product product, int quantity)
         {
             return new ProductSnapshot
             {
                 Id = Guid.NewGuid(),
                 Name = product.Name,
                 Price = product.Price,
+                Quantity = quantity,
                 SnapshotVersion = product.Version,
                 ProductId = product.Id
+            };
+        }
+
+        public static ProductSnapshotDto ToSnapshotDto(this ProductSnapshot snapshot)
+        {
+            return new ProductSnapshotDto
+            {
+                Id = snapshot.Id.ToString(),
+                Name = snapshot.Name,
+                Price = snapshot.Price,
+                Quantity= snapshot.Quantity,
+                ProductId = snapshot.ProductId.ToString()
+            };
+        }
+
+        public static OrderDto ToOrderDto(this Order order)
+        {
+            return new OrderDto
+            {
+                Id = order.Id.ToString(),
+                TotalPrice = order.ProductSnapshots!.Sum(x => x.Price * x.Quantity),
+                Products = order.ProductSnapshots!.Select(ToSnapshotDto).ToList()
             };
         }
     }

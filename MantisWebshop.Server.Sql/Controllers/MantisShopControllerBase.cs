@@ -48,6 +48,8 @@ namespace MantisWebshop.Server.Sql.Controllers
                 var user = await DbContext.Users
                     .Include(x => x.CartItems)
                     .Include(x => x.Products)
+                    .Include(x => x.Orders)
+                    .ThenInclude(y => y.ProductSnapshots)
                     .SingleOrDefaultAsync(x => x.Id.ToString().Equals(userId));
                 Response.StatusCode = user is not null ? 200 : 401;
                 return user;

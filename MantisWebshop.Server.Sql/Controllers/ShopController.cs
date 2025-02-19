@@ -133,7 +133,7 @@ namespace MantisWebshop.Server.Sql.Controllers
 
             try
             {
-                return GetResponse(200, "Ok", user.Orders);
+                return GetResponse(200, "Ok", user.Orders?.Select(ModelDtoExtensions.ToOrderDto));
             }
             catch (Exception ex)
             {
@@ -163,7 +163,7 @@ namespace MantisWebshop.Server.Sql.Controllers
                 {
                     Id = Guid.NewGuid(),
                     User = user,
-                    ProductSnapshots = user.CartItems!.Select(x => x.Product.TakeSnapshot()).ToList()
+                    ProductSnapshots = user.CartItems!.Select(x => x.Product.TakeSnapshot(x.Quantity)).ToList()
                 };
 
                 DbContext.CartItems.RemoveRange(user.CartItems!);
