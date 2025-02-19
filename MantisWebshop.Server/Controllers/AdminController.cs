@@ -68,7 +68,6 @@ namespace MantisWebshop.Server.Controllers
                 {
                     _logger.LogWarning($"User [{user.Id}] is not authorized to view product [{prod.Id}]");
                     Response.StatusCode = 401;
-                    return null!;
                 }
 
                 _logger.LogInformation($"Product found by id {id}");

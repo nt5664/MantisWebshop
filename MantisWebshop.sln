@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantisWebshop.Server", "MantisWebshop.Server\MantisWebshop.Server.csproj", "{42895C17-D176-49F5-AD67-ADCB5DB1A1F2}"
-EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "mantiswebshop.client", "mantiswebshop.client\mantiswebshop.client.esproj", "{2CBAEB8F-B51A-45AD-BEFD-AF7907A60A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantisWebshop.Server.Sql", "MantisWebshop.Server.Sql\MantisWebshop.Server.Sql.csproj", "{1637C5F6-AFDD-4721-BAD8-3E79F251879C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantisWebshop.Server", "MantisWebshop.Server\MantisWebshop.Server.csproj", "{46681C56-0351-4CA4-81D2-EE9681C872C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +15,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{42895C17-D176-49F5-AD67-ADCB5DB1A1F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42895C17-D176-49F5-AD67-ADCB5DB1A1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42895C17-D176-49F5-AD67-ADCB5DB1A1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42895C17-D176-49F5-AD67-ADCB5DB1A1F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CBAEB8F-B51A-45AD-BEFD-AF7907A60A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CBAEB8F-B51A-45AD-BEFD-AF7907A60A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CBAEB8F-B51A-45AD-BEFD-AF7907A60A74}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{2CBAEB8F-B51A-45AD-BEFD-AF7907A60A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CBAEB8F-B51A-45AD-BEFD-AF7907A60A74}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CBAEB8F-B51A-45AD-BEFD-AF7907A60A74}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1637C5F6-AFDD-4721-BAD8-3E79F251879C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1637C5F6-AFDD-4721-BAD8-3E79F251879C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1637C5F6-AFDD-4721-BAD8-3E79F251879C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1637C5F6-AFDD-4721-BAD8-3E79F251879C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46681C56-0351-4CA4-81D2-EE9681C872C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46681C56-0351-4CA4-81D2-EE9681C872C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46681C56-0351-4CA4-81D2-EE9681C872C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46681C56-0351-4CA4-81D2-EE9681C872C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
