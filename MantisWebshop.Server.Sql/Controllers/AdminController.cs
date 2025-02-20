@@ -94,7 +94,7 @@ namespace MantisWebshop.Server.Sql.Controllers
         [HttpPost]
         [Route("[controller]/products/edit")]
         [Authorize]
-        public async Task<ActionResponse> PostEditProduct([FromForm] ProductDto dto)
+        public async Task<ActionResponse> PostEditProduct([FromForm] ProductInput dto)
         {
             if (dto is null)
                 return GetResponse(400, "Invalid data");

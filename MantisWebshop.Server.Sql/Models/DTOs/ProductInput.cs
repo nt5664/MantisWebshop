@@ -2,14 +2,13 @@
 
 namespace MantisWebshop.Server.Sql.Models.DTOs
 {
-    public class ProductDto
+    public class ProductInput
     {
         public string? Id { get; set; }
         public required string Name { get; set; }
         public required string Description { get; set; }
         public float Price { get; set; }
-        public string? ImageUrl { get; set; }
-        public string? Creator { get; set; }
+        public IFormFile? Image { get; set; }
 
         public override string ToString()
         {

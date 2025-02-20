@@ -6,7 +6,7 @@ namespace MantisWebshop.Server.Sql.Extensions
 {
     public static class ModelDtoExtensions
     {
-        public static Product ToProduct(this ProductDto dto)
+        public static Product ToProduct(this ProductInput dto)
         {
             return new Product
             {
@@ -16,7 +16,7 @@ namespace MantisWebshop.Server.Sql.Extensions
             };
         }
 
-        public static void UpdateByDto(this Product product, ProductDto dto)
+        public static void UpdateByDto(this Product product, ProductInput dto)
         {
             product.Name = dto.Name;
             product.Description = dto.Description;
