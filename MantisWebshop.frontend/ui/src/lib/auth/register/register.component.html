@@ -1,0 +1,16 @@
+<p-message *ngIf="errorMessage !== null" severity="error">{{ errorMessage }}</p-message>
+
+<div>Name:</div>
+<input type="text" pInputText [(ngModel)]="registerModel.name" />
+
+<div>Email:</div>
+<input type="text" pInputText [(ngModel)]="registerModel.email" />
+
+<div>Password:</div>
+<p-password [(ngModel)]="registerModel.password" [feedback]="false" />
+
+<div>Confirm Password:</div>
+<p-password [(ngModel)]="registerModel.confirmPassword" [feedback]="false" />
+
+<br>
+<p-button label="Register" (onClick)="register()" />

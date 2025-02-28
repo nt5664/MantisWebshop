@@ -1,0 +1,10 @@
+<p-message *ngIf="errorMessage !== null" severity="error">{{ errorMessage }}</p-message>
+
+<div>Email:</div>
+<input type="text" pInputText [(ngModel)]="email" />
+
+<div>Password:</div>
+<p-password [(ngModel)]="password" [feedback]="false" />
+
+<br>
+<p-button label="Login" (onClick)="login()" />

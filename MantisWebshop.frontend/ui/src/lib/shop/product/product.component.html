@@ -1,0 +1,25 @@
+<p-message *ngIf="message" severity="info">{{message}}</p-message>
+
+<p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+  <ng-template #header>
+    <img alt="{{product?.name}}" class="w-full" src="https://localhost:7153/static/{{product?.imageUrl}}" />
+  </ng-template>
+  <ng-template #title> {{product?.name}} </ng-template>
+  <ng-template #subtitle> {{product?.price}} </ng-template>
+  <p>
+    {{product?.description}}
+  </p>
+  <ng-template #footer>
+    <div class="flex gap-4 mt-1">
+      <p-inputnumber [(ngModel)]="quantity" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical" [inputStyle]="{ width: '3rem' }">
+        <ng-template #incrementbuttonicon>
+          <span class="pi pi-plus"></span>
+        </ng-template>
+        <ng-template #decrementbuttonicon>
+          <span class="pi pi-minus"></span>
+        </ng-template>
+      </p-inputnumber>
+      <p-button label="Add to Cart" class="w-full" styleClass="w-full" (onClick)="onAddToCart()" />
+    </div>
+  </ng-template>
+</p-card>

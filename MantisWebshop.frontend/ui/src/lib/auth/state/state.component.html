@@ -1,0 +1,7 @@
+<div>
+  <div class="flex items-center gap-2" role="button" (click)="logout()">
+    <p-button *ngIf="!isLoggedIn()" (onClick)="login()"  label="Login" />
+    <p-button *ngIf="!isLoggedIn()" (onClick)="register()"  label="Register" />
+    <p-button *ngIf="isLoggedIn()" (onClick)="logout()"  label="Logout" />
+  </div>
+</div>

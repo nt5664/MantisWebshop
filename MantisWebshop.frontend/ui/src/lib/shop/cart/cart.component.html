@@ -1,0 +1,27 @@
+<p-message *ngIf="items === null || items.length === 0" severity="warn">The cart is empty.</p-message>
+
+<p-orderlist
+  *ngIf="items !== null && items.length > 0"
+  [value]="items"
+  dataKey="id"
+  breakpoint="575px"
+  scrollHeight="20rem"f
+>
+  <ng-template let-CartItem let-selected="selected" #item>
+    <div class="flex flex-wrap p-1 items-center gap-4 w-full">
+      <img
+        class="w-12 shrink-0 rounded"
+        width="100"
+        height="100"
+        ngSrc="https://localhost:7153/static/{{ CartItem.imageUrl }}"
+        [alt]="CartItem.productName"
+      />
+      <div class="flex-1 flex flex-col">
+        <span class="font-medium text-sm">{{ CartItem.productName }}</span>
+      </div>
+      <span class="font-italic sm:ml-8">Unit Price: {{ '$' + CartItem.unitPrice }}</span>
+      <br>
+      <span class="font-bold sm:ml-8">Price: {{ '$' + (CartItem.unitPrice * CartItem.quantity) }}</span>
+    </div>
+  </ng-template>
+</p-orderlist>
