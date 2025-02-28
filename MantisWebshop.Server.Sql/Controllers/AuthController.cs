@@ -1,6 +1,7 @@
 ﻿using MantisWebshop.Server.Sql.Data;
 using MantisWebshop.Server.Sql.Models;
 using MantisWebshop.Server.Sql.Models.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -70,6 +71,27 @@ namespace MantisWebshop.Server.Sql.Controllers
             catch (Exception ex)
             {
                 Logger.LogError("Login failed", ex.Message, ex.StackTrace);
+                return GetResponse(500, "Unknown error");
+            }
+        }
+
+        [HttpPost]
+        [Route("[controller]/refresh")]
+        [Authorize]
+        public async Task<ActionResponse> RefreshToken()
+        {
+            try
+            {
+                var user = await TryGetUserAsync();
+                if (user is null)
+                    return GetResponse("Invalid token refresh request");
+
+                Logger.LogInformation($"Refresh token generated successfully for user [{user.Id}]");
+                return GetResponse(200, "Ok", GetToken(user));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Token refresh failed", ex.Message, ex.StackTrace);
                 return GetResponse(500, "Unknown error");
             }
         }

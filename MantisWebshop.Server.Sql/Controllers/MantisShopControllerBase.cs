@@ -47,6 +47,7 @@ namespace MantisWebshop.Server.Sql.Controllers
             {
                 var user = await DbContext.Users
                     .Include(x => x.CartItems)
+                    .ThenInclude(x => x.Product)
                     .Include(x => x.Products)
                     .Include(x => x.Orders)
                     .ThenInclude(y => y.ProductSnapshots)

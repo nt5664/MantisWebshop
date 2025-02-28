@@ -9,5 +9,8 @@ namespace MantisWebshop.Server.Sql.Models.DTOs
 
         [Required]
         public int Quantity { get; set; }
+
+        [Required]
+        public bool Override { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace MantisWebshop.Server.Sql.Extensions
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price,
-                ImageUrl = product.ImageUrl,
+                ImageUrl = product.ImageUrl?.Split('\\').Last() ?? Constants.FALLBACK_PRODUCT_IMAGE,
                 Creator = product.Creator?.Id.ToString()
             };
         }
@@ -44,6 +44,7 @@ namespace MantisWebshop.Server.Sql.Extensions
                 ProductId = cartItem.Product.Id.ToString(),
                 ProductName = cartItem.Product.Name,
                 ImageUrl = cartItem.Product.ImageUrl?.Split('\\').Last() ?? Constants.FALLBACK_PRODUCT_IMAGE,
+                UnitPrice = cartItem.Product.Price,
                 Quantity = cartItem.Quantity
             };
         }

@@ -36,7 +36,7 @@ namespace MantisWebshop.Server.Sql.Controllers
         {
             try
             {
-                var product = await DbContext.Products.SingleOrDefaultAsync(x => x.Id.Equals(id));
+                var product = await DbContext.Products.SingleOrDefaultAsync(x => x.Id.ToString().Equals(id));
                 if (product is null)
                     return GetResponse(404, "Product cannot be found", id);
                 else
@@ -85,12 +85,12 @@ namespace MantisWebshop.Server.Sql.Controllers
                     return GetResponse(404, "Product cannot be found");
 
                 int statusCode = 200;
-                if (!(user.CartItems?.Any(x => x.Id.Equals(product.Id)) ?? false))
+                if (!(user.CartItems?.Any(x => x.Product.Id.Equals(product.Id)) ?? false))
                 {
                     if (cartInput.Quantity <= 0)
                         return GetResponse(200, "Ok");
 
-                    user.CartItems ??= new List<CartItem>();
+                    //user.CartItems ??= new List<CartItem>();
                     await DbContext.CartItems.AddAsync(
                         new CartItem
                         {
@@ -105,8 +105,8 @@ namespace MantisWebshop.Server.Sql.Controllers
                 }
                 else
                 {
-                    var cartItem = user.CartItems.Single(x => x.Id.Equals(product.Id));
-                    cartItem.Quantity = cartInput.Quantity;
+                    var cartItem = user.CartItems.Single(x => x.Product.Id.Equals(product.Id));
+                    cartItem.Quantity = cartInput.Override ? cartInput.Quantity : cartItem.Quantity + cartInput.Quantity;
                     if (cartItem.Quantity <= 0)
                         user.CartItems.Remove(cartItem);
 
